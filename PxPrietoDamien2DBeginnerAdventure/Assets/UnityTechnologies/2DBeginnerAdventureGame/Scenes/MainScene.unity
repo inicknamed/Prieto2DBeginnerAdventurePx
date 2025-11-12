@@ -1824,7 +1824,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: abcb801ad7499c74caa94a1efaff9900, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1863,22 +1863,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11eb1af37aba89e48a29d5eb4ab46456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftAction:
-    m_Name: Left
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: c3cb126d-5b8e-4ea8-b34f-a4c16838df09
+  MoveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7f40fe16-ede1-4dd9-9563-24f4c951d6f2
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 167d6f5f-b932-43fb-857b-ecbb97dc3534
-      m_Path: <Keyboard>/leftArrow
+    - m_Name: 2D Vector
+      m_Id: 1ba16def-6fe6-4e6d-a193-e9d7126b787a
+      m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Left
-      m_Flags: 0
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: efe15188-dedc-40d3-9e7f-a74f5fdb560b
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 9c404bc3-1884-4af6-b8c8-9dbc0ee67379
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 24d85037-ad19-40c0-92ad-b5c1df9447bf
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 7fcdf67c-a7ea-48e6-a7be-5c063a21dbf5
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
     m_Flags: 0
 --- !u!1 &1655550747
 GameObject:
