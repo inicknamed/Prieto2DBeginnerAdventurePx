@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 5;
     Vector2 move;
     public float speed = 3.0f;
-    public int currentHealth;
-    public float timeInvincible = 2.5f;
+    int currentHealth;
+    public float timeInvincible = 2.0f;
     bool isInvincible;
     float damageCooldown;
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 move = MoveAction.ReadValue<Vector2>();
+        move = MoveAction.ReadValue<Vector2>();
         Debug.Log(move);
         Vector2 position = (Vector2)transform.position + move * 3.0f * Time.deltaTime;
         transform.position = position;
@@ -52,13 +52,12 @@ public class PlayerController : MonoBehaviour
         if (amount < 0)
         {
             if (isInvincible)
-            {
                 return;
-            }
+            
             isInvincible = true;
             damageCooldown = timeInvincible;
         }       
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 }
