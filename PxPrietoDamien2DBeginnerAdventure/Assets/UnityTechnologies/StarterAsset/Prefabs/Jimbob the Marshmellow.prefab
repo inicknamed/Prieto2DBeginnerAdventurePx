@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4029811352047578045}
   - component: {fileID: 8463252471782571463}
   - component: {fileID: 924079888610361167}
+  - component: {fileID: 5582685340003439222}
   m_Layer: 0
   m_Name: Jimbob the Marshmellow
   m_TagString: Untagged
@@ -138,8 +139,51 @@ MonoBehaviour:
     m_Id: c837a5c7-d7d6-4dd9-95ac-92dfae0145be
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 672c7374-00c5-483a-8b30-ced8b3d170f8
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 9df6c237-0d14-446c-a628-4d32a792a6f6
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 5ae5a4a2-4c52-41a5-a948-1510bbbb0d3b
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 064f9ec1-12ae-42d8-8404-5545ea358217
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 797c3dcc-128a-4d67-ba1d-43475d5adac0
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
     m_Flags: 0
+  maxHealth: 5
+  speed: 3
+  timeInvincible: 1.67
 --- !u!50 &8463252471782571463
 Rigidbody2D:
   serializedVersion: 4
@@ -199,7 +243,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0061807632, y: -0.8035131}
+  m_Offset: {x: -0.0061807632, y: 0.36822373}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -210,5 +254,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8035128, y: 0.97527635}
+  m_Size: {x: 1.8035128, y: 0.9413127}
   m_EdgeRadius: 0
+--- !u!95 &5582685340003439222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595063589220769342}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15c93a869dd14df478b6eebf0c4a9b3d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
