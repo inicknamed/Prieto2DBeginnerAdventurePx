@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public int health { get { return currentHealth; }}
+    public int health { get { return currentHealth; } }
     public InputAction MoveAction;
     Rigidbody2D rigidbody2d;
     public int maxHealth = 5;
@@ -18,14 +18,16 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
     public GameObject projectilePrefab;
+    public InputAction talkAction;
 
     // Start is called before the first frame update
     void Start()
     {
         MoveAction.Enable();
-        rigidbody2d=GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        talkAction.Enable();
     }
 
     // Update is called once per frame
@@ -51,9 +53,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            FindFriend();
         }
     }
     void FixedUpdate()
@@ -68,11 +74,11 @@ public class PlayerController : MonoBehaviour
         {
             if (isInvincible)
                 return;
-            
+
             isInvincible = true;
             damageCooldown = timeInvincible;
             animator.SetTrigger("Hit");
-        }       
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
@@ -84,5 +90,14 @@ public class PlayerController : MonoBehaviour
 
 
         animator.SetTrigger("Launch");
+    }
+    void FindFriend()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
+        
+        if (hit.collider != null)
+        {
+            Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+        }
     }
 }
