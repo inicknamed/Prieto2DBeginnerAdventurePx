@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     Rigidbody2D rigidbody2d;
     Animator animator;
+    bool broken = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!broken)
+        {
+            return;
+        }
+
         animator.SetFloat("Move X", 0);
         animator.SetFloat("Move Y", direction);
 
@@ -62,5 +68,11 @@ public class EnemyController : MonoBehaviour
         {
             player.ChangeHealth(-1);
         }
+    }
+
+    public void Fix()
+    {
+        broken = false;
+        rigidbody2d.simulated = false;
     }
 }
