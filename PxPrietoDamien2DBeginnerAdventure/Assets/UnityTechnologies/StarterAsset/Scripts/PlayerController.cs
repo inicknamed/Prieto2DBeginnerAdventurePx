@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection = new Vector2(1, 0);
     public GameObject projectilePrefab;
     public InputAction talkAction;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         talkAction.Enable();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -94,10 +96,18 @@ public class PlayerController : MonoBehaviour
     void FindFriend()
     {
         RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
-        
+
         if (hit.collider != null)
         {
-            Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+            NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+            if (character != null)
+            {
+                UIHandler.instance.DisplayDialogue();
+            }
         }
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
